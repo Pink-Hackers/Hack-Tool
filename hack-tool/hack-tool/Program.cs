@@ -86,7 +86,6 @@ namespace ConsoleApplication1
                 else
                 {
                     Console.WriteLine("");
-                    Console.WriteLine(password);
                     Console.WriteLine("password doesn't match.");
                     Console.WriteLine("Plz re-enter your password!");
                     Console.WriteLine("Attemps left: " + (i - 1));
