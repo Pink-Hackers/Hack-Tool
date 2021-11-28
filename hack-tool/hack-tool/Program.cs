@@ -94,6 +94,7 @@ namespace ConsoleApplication1
                 Console.Write("\r");
                 Console.Write(string.Join("", loading));
             }
+            //khiar
         }
     }
 }
