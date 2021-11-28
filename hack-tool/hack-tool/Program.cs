@@ -49,17 +49,44 @@ namespace ConsoleApplication1
         }
         static void GetPassword()
         {
-            Console.Write("Plz type password to get information: ");
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
+            Console.WriteLine("Plz type password to get information: ");
             for (int i = 3; i > 0; i--)
             {
-                string password = Console.ReadLine();
-                if (password == "1234")
+                StringBuilder password = new StringBuilder();
+                while (true)
                 {
+                    int x = Console.CursorLeft;
+                    int y = Console.CursorTop;
+                    var key = Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.Enter)
+                        break;
+                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                    {
+                        password.Remove(password.Length - 1, 1);
+                        Console.SetCursorPosition(x - 1, y);
+                        Console.Write(" ");
+                        Console.SetCursorPosition(x - 1, y);
+                    }
+                    else if (key.Key != ConsoleKey.Backspace)
+                    {
+                        password.Append(key.KeyChar);
+                        Console.Write("*");
+                    }
+                }
+                if (password.ToString() == "1234")
+                {
+                    Console.WriteLine("");
                     Console.WriteLine(" password: 1234");
                     break;
                 }
                 else
                 {
+                    Console.WriteLine("");
+                    Console.WriteLine(password);
                     Console.WriteLine("password doesn't match.");
                     Console.WriteLine("Plz re-enter your password!");
                     Console.WriteLine("Attemps left: " + (i - 1));
@@ -75,7 +102,7 @@ namespace ConsoleApplication1
             for (int i = 0; i < 20; i++)
             {
                 Random rnd = new Random();
-                if (rnd.Next(1, 50) == 1)
+                if (rnd.Next(1, 100000) == 1)
                 {
                     hackFailed = true;
                     break;
@@ -94,7 +121,6 @@ namespace ConsoleApplication1
                 Console.Write("\r");
                 Console.Write(string.Join("", loading));
             }
-            
         }
     }
 }
