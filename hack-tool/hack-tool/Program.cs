@@ -53,7 +53,7 @@ namespace ConsoleApplication1
             for (int i = 3; i > 0; i--)
             {
                 string password = Console.ReadLine();
-                if (password == "aishiakooni")
+                if (password == "1234")
                 {
                     Console.WriteLine(" password: 1234");
                     break;
@@ -94,7 +94,7 @@ namespace ConsoleApplication1
                 Console.Write("\r");
                 Console.Write(string.Join("", loading));
             }
-            //khiar
+            
         }
     }
 }
