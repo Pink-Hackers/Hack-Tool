@@ -11,6 +11,7 @@ namespace ConsoleApplication1
     class Program
     {
         public static bool hackFailed = false;
+        public static string ip;
         static void Main(string[] args)
         {
             string name;
@@ -22,7 +23,6 @@ namespace ConsoleApplication1
             family = Console.ReadLine();
             Console.WriteLine("Welcome " + name + family + " have fun");
             //Hack
-            string ip;
             Console.Write("Hey " + name + " plz enter IP: ");
             ip = Console.ReadLine();
             Console.WriteLine("Plz wait hacking " + ip + "...");
@@ -94,31 +94,38 @@ namespace ConsoleApplication1
         }
         static void progressBar()
         {
+            float percent = 0f;
             Console.OutputEncoding = Encoding.UTF8;
-            string[] loading = { "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591", "\u2591" };
-            Console.Write(string.Join("", loading));
-
-            for (int i = 0; i < 20; i++)
+            List<string> loading = new List<string>();
+            for (int i = 0; i < ip.Length * 2; i++)
             {
-                Random rnd = new Random();
+                loading.Add("\u2591");
+            }
+            Console.Write(string.Join("", loading) + percent + "%");
+            List<int> delays = new List<int>();
+            Random rnd = new Random();
+            int currentDelay = 0;
+            float finalSum = 0f;
+            float currentSum = 0f;
+            for (int i = 0; i < loading.Count; i++)
+            {
+                currentDelay = rnd.Next(300, 800);
+                finalSum += currentDelay;
+                delays.Add(currentDelay);
+            }
+            for (int i = 0; i < loading.Count; i++)
+            {
                 if (rnd.Next(1, 100000) == 1)
                 {
                     hackFailed = true;
                     break;
                 }
-                int delay = 0;
-                if (i == 19)
-                {
-                    delay = 3000;
-                }
-                else
-                {
-                    delay = rnd.Next(300, 800);
-                }
-                Thread.Sleep(delay);
+                Thread.Sleep(delays[i]);
                 loading[i] = "\u2593";
+                currentSum += delays[i];
+                percent = currentSum / finalSum * 100;
                 Console.Write("\r");
-                Console.Write(string.Join("", loading));
+                Console.Write(string.Join("", loading) + Convert.ToInt32(percent) + "%");
             }
         }
     }
