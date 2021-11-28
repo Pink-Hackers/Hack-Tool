@@ -7,3 +7,6 @@ C:\Users\uxros\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\obj\Debug\hack-too
 C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\bin\Debug\hack-tool.exe.config
 C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\obj\Debug\hack-tool.exe
 C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\obj\Debug\hack-tool.pdb
+C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\bin\Debug\hack-tool.exe
+C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\bin\Debug\hack-tool.pdb
+C:\Users\ajall\Documents\GitHub\Hack-Tool\hack-tool\hack-tool\obj\Debug\hack-tool.csprojResolveAssemblyReference.cache
